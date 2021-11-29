@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/ProjectWyvern/wyvern-js#readme",
   "dependencies": {
-    "0x.js": "^0.29.2",
     "@0xproject/abi-gen": "^0.1.1",
     "@0xproject/assert": "^0.0.11",
     "@0xproject/json-schemas": "^0.7.3",
@@ -35,6 +34,7 @@
     "@0xproject/web3-wrapper": "^0.1.4",
     "@types/lodash": "^4.14.92",
     "@types/node": "^9.3.0",
+    "0x.js": "^0.29.2",
     "awesome-typescript-loader": "^3.4.1",
     "bn.js": "^4.11.8",
     "ethereumjs-abi": "https://github.com/ProjectWyvern/ethereumjs-abi.git",
@@ -42,6 +42,7 @@
     "json-loader": "^0.5.7",
     "jsonschema": "^1.2.2",
     "lodash": "^4.17.4",
+    "sha3": "^2.1.4",
     "ts-node": "^6.1.0",
     "tslint": "^5.9.1",
     "tslint-eslint-rules": "^4.1.1",
