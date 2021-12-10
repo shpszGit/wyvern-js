@@ -1,0 +1,478 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@0xproject/abi-gen": {
+      "name": "@0xproject/abi-gen",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@0xproject/utils",
+        "web3",
+        "yargs"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@0xproject/abi-gen"
+      ],
+      "fixAvailable": {
+        "name": "@0xproject/abi-gen",
+        "version": "1.0.13",
+        "isSemVerMajor": true
+      }
+    },
+    "@0xproject/types": {
+      "name": "@0xproject/types",
+      "severity": "low",
+      "isDirect": true,
+      "via": [
+        "web3"
+      ],
+      "effects": [],
+      "range": "<=0.4.1",
+      "nodes": [
+        "node_modules/@0xproject/types"
+      ],
+      "fixAvailable": {
+        "name": "@0xproject/types",
+        "version": "1.1.4",
+        "isSemVerMajor": true
+      }
+    },
+    "@0xproject/utils": {
+      "name": "@0xproject/utils",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "web3"
+      ],
+      "effects": [
+        "@0xproject/abi-gen",
+        "@0xproject/web3-wrapper"
+      ],
+      "range": "0.2.4 - 0.7.3",
+      "nodes": [
+        "node_modules/@0xproject/abi-gen/node_modules/@0xproject/utils",
+        "node_modules/@0xproject/web3-wrapper/node_modules/@0xproject/utils"
+      ],
+      "fixAvailable": {
+        "name": "@0xproject/abi-gen",
+        "version": "1.0.13",
+        "isSemVerMajor": true
+      }
+    },
+    "@0xproject/web3-wrapper": {
+      "name": "@0xproject/web3-wrapper",
+      "severity": "low",
+      "isDirect": true,
+      "via": [
+        "@0xproject/utils",
+        "web3"
+      ],
+      "effects": [
+        "0x.js"
+      ],
+      "range": "<=0.7.3",
+      "nodes": [
+        "node_modules/@0xproject/web3-wrapper"
+      ],
+      "fixAvailable": {
+        "name": "@0xproject/web3-wrapper",
+        "version": "3.0.3",
+        "isSemVerMajor": true
+      }
+    },
+    "0x.js": {
+      "name": "0x.js",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@0xproject/web3-wrapper",
+        "find-versions",
+        "web3"
+      ],
+      "effects": [],
+      "range": "<=0.38.6",
+      "nodes": [
+        "node_modules/0x.js"
+      ],
+      "fixAvailable": {
+        "name": "0x.js",
+        "version": "9.2.0",
+        "isSemVerMajor": true
+      }
+    },
+    "ansi-regex": {
+      "name": "ansi-regex",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1004946,
+          "name": "ansi-regex",
+          "dependency": "ansi-regex",
+          "title": " Inefficient Regular Expression Complexity in chalk/ansi-regex",
+          "url": "https://github.com/advisories/GHSA-93q8-gq69-wqmw",
+          "severity": "moderate",
+          "range": ">2.1.1 <5.0.1"
+        }
+      ],
+      "effects": [
+        "strip-ansi"
+      ],
+      "range": ">2.1.1 <5.0.1",
+      "nodes": [
+        "node_modules/cliui/node_modules/ansi-regex",
+        "node_modules/mocha-typescript/node_modules/ansi-regex",
+        "node_modules/yargs/node_modules/ansi-regex"
+      ],
+      "fixAvailable": {
+        "name": "@0xproject/abi-gen",
+        "version": "1.0.13",
+        "isSemVerMajor": true
+      }
+    },
+    "cliui": {
+      "name": "cliui",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "strip-ansi"
+      ],
+      "effects": [
+        "yargs"
+      ],
+      "range": "4.0.0 - 5.0.0",
+      "nodes": [
+        "node_modules/cliui"
+      ],
+      "fixAvailable": {
+        "name": "@0xproject/abi-gen",
+        "version": "1.0.13",
+        "isSemVerMajor": true
+      }
+    },
+    "find-versions": {
+      "name": "find-versions",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "semver-regex"
+      ],
+      "effects": [
+        "0x.js"
+      ],
+      "range": "<=3.2.0",
+      "nodes": [
+        "node_modules/find-versions"
+      ],
+      "fixAvailable": {
+        "name": "0x.js",
+        "version": "9.2.0",
+        "isSemVerMajor": true
+      }
+    },
+    "mem": {
+      "name": "mem",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1006311,
+          "name": "mem",
+          "dependency": "mem",
+          "title": "Denial of Service in mem",
+          "url": "https://github.com/advisories/GHSA-4xcv-9jjx-gfj3",
+          "severity": "moderate",
+          "range": "<4.0.0"
+        }
+      ],
+      "effects": [
+        "os-locale"
+      ],
+      "range": "<4.0.0",
+      "nodes": [
+        "node_modules/mem"
+      ],
+      "fixAvailable": {
+        "name": "@0xproject/abi-gen",
+        "version": "1.0.13",
+        "isSemVerMajor": true
+      }
+    },
+    "minimist": {
+      "name": "minimist",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1006180,
+          "name": "minimist",
+          "dependency": "minimist",
+          "title": "Prototype Pollution in minimist",
+          "url": "https://github.com/advisories/GHSA-vh95-rmgr-6w4m",
+          "severity": "moderate",
+          "range": "<0.2.1"
+        }
+      ],
+      "effects": [
+        "mkdirp"
+      ],
+      "range": "<0.2.1",
+      "nodes": [
+        "node_modules/minimist"
+      ],
+      "fixAvailable": {
+        "name": "mocha",
+        "version": "9.1.3",
+        "isSemVerMajor": true
+      }
+    },
+    "mkdirp": {
+      "name": "mkdirp",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "minimist"
+      ],
+      "effects": [
+        "mocha"
+      ],
+      "range": "0.4.1 - 0.5.1",
+      "nodes": [
+        "node_modules/mkdirp"
+      ],
+      "fixAvailable": {
+        "name": "mocha",
+        "version": "9.1.3",
+        "isSemVerMajor": true
+      }
+    },
+    "mocha": {
+      "name": "mocha",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "mkdirp"
+      ],
+      "effects": [],
+      "range": "1.21.5 - 6.2.2 || 7.0.0-esm1 - 7.1.0",
+      "nodes": [
+        "node_modules/mocha"
+      ],
+      "fixAvailable": {
+        "name": "mocha",
+        "version": "9.1.3",
+        "isSemVerMajor": true
+      }
+    },
+    "mocha-typescript": {
+      "name": "mocha-typescript",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "yargs"
+      ],
+      "effects": [],
+      "range": ">=1.1.15",
+      "nodes": [
+        "node_modules/mocha-typescript"
+      ],
+      "fixAvailable": {
+        "name": "mocha-typescript",
+        "version": "1.1.14",
+        "isSemVerMajor": true
+      }
+    },
+    "os-locale": {
+      "name": "os-locale",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "mem"
+      ],
+      "effects": [
+        "yargs"
+      ],
+      "range": "2.0.0 - 3.0.0",
+      "nodes": [
+        "node_modules/os-locale"
+      ],
+      "fixAvailable": {
+        "name": "@0xproject/abi-gen",
+        "version": "1.0.13",
+        "isSemVerMajor": true
+      }
+    },
+    "semver-regex": {
+      "name": "semver-regex",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1005009,
+          "name": "semver-regex",
+          "dependency": "semver-regex",
+          "title": "Regular Expression Denial of Service (ReDOS)",
+          "url": "https://github.com/advisories/GHSA-44c6-4v22-4mhx",
+          "severity": "moderate",
+          "range": "<3.1.3"
+        }
+      ],
+      "effects": [
+        "find-versions"
+      ],
+      "range": "<3.1.3",
+      "nodes": [
+        "node_modules/semver-regex"
+      ],
+      "fixAvailable": {
+        "name": "0x.js",
+        "version": "9.2.0",
+        "isSemVerMajor": true
+      }
+    },
+    "string-width": {
+      "name": "string-width",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "strip-ansi"
+      ],
+      "effects": [],
+      "range": "2.1.0 - 4.1.0",
+      "nodes": [
+        "node_modules/cliui/node_modules/string-width",
+        "node_modules/mocha-typescript/node_modules/string-width",
+        "node_modules/yargs/node_modules/string-width"
+      ],
+      "fixAvailable": true
+    },
+    "strip-ansi": {
+      "name": "strip-ansi",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "ansi-regex"
+      ],
+      "effects": [
+        "cliui",
+        "string-width"
+      ],
+      "range": "4.0.0 - 5.2.0",
+      "nodes": [
+        "node_modules/cliui/node_modules/strip-ansi",
+        "node_modules/mocha-typescript/node_modules/strip-ansi",
+        "node_modules/yargs/node_modules/strip-ansi"
+      ],
+      "fixAvailable": {
+        "name": "@0xproject/abi-gen",
+        "version": "1.0.13",
+        "isSemVerMajor": true
+      }
+    },
+    "web3": {
+      "name": "web3",
+      "severity": "low",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 1004982,
+          "name": "web3",
+          "dependency": "web3",
+          "title": "Insecure Credential Storage in web3",
+          "url": "https://github.com/advisories/GHSA-27v7-qhfv-rqq8",
+          "severity": "low",
+          "range": "<=1.5.2"
+        }
+      ],
+      "effects": [
+        "@0xproject/abi-gen",
+        "@0xproject/types",
+        "@0xproject/utils",
+        "@0xproject/web3-wrapper",
+        "0x.js"
+      ],
+      "range": "<=1.5.2",
+      "nodes": [
+        "node_modules/web3"
+      ],
+      "fixAvailable": {
+        "name": "web3",
+        "version": "1.6.1",
+        "isSemVerMajor": true
+      }
+    },
+    "yargs": {
+      "name": "yargs",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "cliui",
+        "os-locale",
+        "yargs-parser"
+      ],
+      "effects": [
+        "@0xproject/abi-gen",
+        "mocha-typescript"
+      ],
+      "range": "8.0.0-candidate.0 - 15.0.0",
+      "nodes": [
+        "node_modules/mocha-typescript/node_modules/yargs",
+        "node_modules/yargs"
+      ],
+      "fixAvailable": {
+        "name": "@0xproject/abi-gen",
+        "version": "1.0.13",
+        "isSemVerMajor": true
+      }
+    },
+    "yargs-parser": {
+      "name": "yargs-parser",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1005534,
+          "name": "yargs-parser",
+          "dependency": "yargs-parser",
+          "title": "Prototype Pollution in yargs-parser",
+          "url": "https://github.com/advisories/GHSA-p9pc-299p-vxgp",
+          "severity": "moderate",
+          "range": ">=6.0.0 <13.1.2"
+        }
+      ],
+      "effects": [
+        "yargs"
+      ],
+      "range": "6.0.0 - 13.1.1",
+      "nodes": [
+        "node_modules/mocha-typescript/node_modules/yargs-parser",
+        "node_modules/yargs-parser"
+      ],
+      "fixAvailable": {
+        "name": "@0xproject/abi-gen",
+        "version": "1.0.13",
+        "isSemVerMajor": true
+      }
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 4,
+      "moderate": 16,
+      "high": 0,
+      "critical": 0,
+      "total": 20
+    },
+    "dependencies": {
+      "prod": 398,
+      "dev": 44,
+      "optional": 1,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 442
+    }
+  }
+}

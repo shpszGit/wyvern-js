@@ -73,7 +73,7 @@ export declare class WyvernExchangeContract extends BaseContract {
         callAsync(addrs_0: string[], uints_1: BigNumber[], feeMethod_2: number | BigNumber, side_3: number | BigNumber, saleKind_4: number | BigNumber, howToCall_5: number | BigNumber, calldata_6: string, replacementPattern_7: string, staticExtradata_8: string, txData?: TxData): Promise<string>;
     };
     ordersCanMatch_: {
-        callAsync(addrs_0: string[], uints_1: BigNumber[], feeMethodsSidesKindsHowToCalls_2: (number | BigNumber)[], calldataBuy_3: string, calldataSell_4: string, replacementPatternBuy_5: string, replacementPatternSell_6: string, staticExtradataBuy_7: string, staticExtradataSell_8: string, txData?: TxData): Promise<boolean>;
+        callAsync(addrs_0: string[], uints_1: BigNumber[], feeMethodsSidesKindsHowToCalls_2: Array<number | BigNumber>, calldataBuy_3: string, calldataSell_4: string, replacementPatternBuy_5: string, replacementPatternSell_6: string, staticExtradataBuy_7: string, staticExtradataSell_8: string, txData?: TxData): Promise<boolean>;
     };
     approveOrder_: {
         sendTransactionAsync(addrs_0: string[], uints_1: BigNumber[], feeMethod_2: number | BigNumber, side_3: number | BigNumber, saleKind_4: number | BigNumber, howToCall_5: number | BigNumber, calldata_6: string, replacementPattern_7: string, staticExtradata_8: string, orderbookInclusionDesired_9: boolean, txData?: TxData): Promise<string>;
@@ -104,9 +104,9 @@ export declare class WyvernExchangeContract extends BaseContract {
         getABIEncodedTransactionData(addrs_0: string[], uints_1: BigNumber[], feeMethod_2: number | BigNumber, side_3: number | BigNumber, saleKind_4: number | BigNumber, howToCall_5: number | BigNumber, calldata_6: string, replacementPattern_7: string, staticExtradata_8: string, v_9: number | BigNumber, r_10: string, s_11: string): string;
     };
     atomicMatch_: {
-        sendTransactionAsync(addrs_0: string[], uints_1: BigNumber[], feeMethodsSidesKindsHowToCalls_2: (number | BigNumber)[], calldataBuy_3: string, calldataSell_4: string, replacementPatternBuy_5: string, replacementPatternSell_6: string, staticExtradataBuy_7: string, staticExtradataSell_8: string, vs_9: (number | BigNumber)[], rssMetadata_10: string[], txData?: TxDataPayable): Promise<string>;
-        estimateGasAsync(addrs_0: string[], uints_1: BigNumber[], feeMethodsSidesKindsHowToCalls_2: (number | BigNumber)[], calldataBuy_3: string, calldataSell_4: string, replacementPatternBuy_5: string, replacementPatternSell_6: string, staticExtradataBuy_7: string, staticExtradataSell_8: string, vs_9: (number | BigNumber)[], rssMetadata_10: string[], txData?: TxData): Promise<number>;
-        getABIEncodedTransactionData(addrs_0: string[], uints_1: BigNumber[], feeMethodsSidesKindsHowToCalls_2: (number | BigNumber)[], calldataBuy_3: string, calldataSell_4: string, replacementPatternBuy_5: string, replacementPatternSell_6: string, staticExtradataBuy_7: string, staticExtradataSell_8: string, vs_9: (number | BigNumber)[], rssMetadata_10: string[]): string;
+        sendTransactionAsync(addrs_0: string[], uints_1: BigNumber[], feeMethodsSidesKindsHowToCalls_2: Array<number | BigNumber>, calldataBuy_3: string, calldataSell_4: string, replacementPatternBuy_5: string, replacementPatternSell_6: string, staticExtradataBuy_7: string, staticExtradataSell_8: string, vs_9: Array<number | BigNumber>, rssMetadata_10: string[], txData?: TxDataPayable): Promise<string>;
+        estimateGasAsync(addrs_0: string[], uints_1: BigNumber[], feeMethodsSidesKindsHowToCalls_2: Array<number | BigNumber>, calldataBuy_3: string, calldataSell_4: string, replacementPatternBuy_5: string, replacementPatternSell_6: string, staticExtradataBuy_7: string, staticExtradataSell_8: string, vs_9: Array<number | BigNumber>, rssMetadata_10: string[], txData?: TxData): Promise<number>;
+        getABIEncodedTransactionData(addrs_0: string[], uints_1: BigNumber[], feeMethodsSidesKindsHowToCalls_2: Array<number | BigNumber>, calldataBuy_3: string, calldataSell_4: string, replacementPatternBuy_5: string, replacementPatternSell_6: string, staticExtradataBuy_7: string, staticExtradataSell_8: string, vs_9: Array<number | BigNumber>, rssMetadata_10: string[]): string;
     };
     validateOrderParameters_: {
         callAsync(addrs_0: string[], uints_1: BigNumber[], feeMethod_2: number | BigNumber, side_3: number | BigNumber, saleKind_4: number | BigNumber, howToCall_5: number | BigNumber, calldata_6: string, replacementPattern_7: string, staticExtradata_8: string, txData?: TxData): Promise<boolean>;
@@ -115,7 +115,7 @@ export declare class WyvernExchangeContract extends BaseContract {
         callAsync(txData?: TxData): Promise<BigNumber>;
     };
     calculateMatchPrice_: {
-        callAsync(addrs_0: string[], uints_1: BigNumber[], feeMethodsSidesKindsHowToCalls_2: (number | BigNumber)[], calldataBuy_3: string, calldataSell_4: string, replacementPatternBuy_5: string, replacementPatternSell_6: string, staticExtradataBuy_7: string, staticExtradataSell_8: string, txData?: TxData): Promise<BigNumber>;
+        callAsync(addrs_0: string[], uints_1: BigNumber[], feeMethodsSidesKindsHowToCalls_2: Array<number | BigNumber>, calldataBuy_3: string, calldataSell_4: string, replacementPatternBuy_5: string, replacementPatternSell_6: string, staticExtradataBuy_7: string, staticExtradataSell_8: string, txData?: TxData): Promise<BigNumber>;
     };
     approvedOrders: {
         callAsync(index_0: string, txData?: TxData): Promise<boolean>;
