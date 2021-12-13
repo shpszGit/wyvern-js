@@ -47,14 +47,16 @@ declare module 'truffle-hdwallet-provider' {
 }
 
 // abi-decoder declarations
-interface DecodedLogArg {}
+interface DecodedLogArg { }
 interface DecodedLog {
     name: string;
     events: DecodedLogArg[];
 }
 declare module 'abi-decoder' {
-        const addABI: (abi: Web3.AbiDefinition) => void;
-        const decodeLogs: (logs: Web3.LogEntry[]) => DecodedLog[];
+    // @ts-ignore
+    const addABI: (abi: Web3.AbiDefinition) => void;
+    // @ts-ignore
+    const decodeLogs: (logs: Web3.LogEntry[]) => DecodedLog[];
 }
 
 declare module 'web3/lib/solidity/coder' {
