@@ -1,29 +1,29 @@
 /* Sourced from 0x.js */
 
-import * as ethUtil from 'ethereumjs-util';
+import { bufferToHex, ecrecover, fromRpcSig, pubToAddress, toBuffer } from 'ethereumjs-util';
 
 import { ECSignature } from '../types';
 
 export const signatureUtils = {
     isValidSignature(data: string, signature: ECSignature, signerAddress: string): boolean {
-        const dataBuff = ethUtil.toBuffer(data);
-        // const msgHashBuff = ethUtil.hashPersonalMessage(dataBuff);
+        const dataBuff = toBuffer(data);
+        // const msgHashBuff = hashPersonalMessage(dataBuff);
         const msgHashBuff = dataBuff;
         try {
-            const pubKey = ethUtil.ecrecover(
+            const pubKey = ecrecover(
                 msgHashBuff,
                 signature.v,
-                ethUtil.toBuffer(signature.r),
-                ethUtil.toBuffer(signature.s),
+                toBuffer(signature.r),
+                toBuffer(signature.s),
             );
-            const retrievedAddress = ethUtil.bufferToHex(ethUtil.pubToAddress(pubKey));
+            const retrievedAddress = bufferToHex(pubToAddress(pubKey));
             return retrievedAddress === signerAddress;
         } catch (err) {
             return false;
         }
     },
     parseSignatureHexAsVRS(signatureHex: string): ECSignature {
-        const signatureBuffer = ethUtil.toBuffer(signatureHex);
+        const signatureBuffer = toBuffer(signatureHex);
         let v = signatureBuffer[0];
         if (v < 27) {
             v += 27;
@@ -32,17 +32,17 @@ export const signatureUtils = {
         const s = signatureBuffer.slice(33, 65);
         const ecSignature: ECSignature = {
             v,
-            r: ethUtil.bufferToHex(r),
-            s: ethUtil.bufferToHex(s),
+            r: bufferToHex(r),
+            s: bufferToHex(s),
         };
         return ecSignature;
     },
     parseSignatureHexAsRSV(signatureHex: string): ECSignature {
-        const { v, r, s } = ethUtil.fromRpcSig(signatureHex);
+        const { v, r, s } = fromRpcSig(signatureHex);
         const ecSignature: ECSignature = {
             v,
-            r: ethUtil.bufferToHex(r),
-            s: ethUtil.bufferToHex(s),
+            r: bufferToHex(r),
+            s: bufferToHex(s),
         };
         return ecSignature;
     },

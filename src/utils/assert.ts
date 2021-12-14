@@ -1,7 +1,7 @@
 /* Sourced from 0x.js */
 
-import { assert as sharedAssert } from '@0x/assert';
 import { Web3Wrapper } from '@0x/web3-wrapper';
+import { assert as sharedAssert } from '@0xproject/assert';
 import * as _ from 'lodash';
 
 import { ECSignature } from '../types';
