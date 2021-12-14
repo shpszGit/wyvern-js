@@ -1,5 +1,5 @@
 import { TxData, TxDataPayable } from '@0xproject/types';
-import * as Web3 from 'web3';
+import Web3 from 'web3';
 export declare class BaseContract {
     protected web3ContractInstance: Web3.ContractInstance;
     protected defaults: Partial<TxData>;

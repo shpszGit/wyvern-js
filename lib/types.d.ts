@@ -1,6 +1,6 @@
 import { TransactionReceipt } from '@0xproject/types';
-import { BigNumber } from '@0xproject/utils';
-import * as Web3 from 'web3';
+import { BigNumber } from '@0x/utils';
+import Web3 from 'web3';
 export interface WyvernProtocolConfig {
     network: Network;
     gasPrice?: BigNumber;

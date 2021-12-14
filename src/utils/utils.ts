@@ -1,9 +1,9 @@
 /* Sourced from 0x.js */
 
-import { BigNumber } from '@0xproject/utils';
+import { BigNumber } from '@0x/utils';
 import BN = require('bn.js');
 import * as ethABI from 'ethereumjs-abi';
-import * as ethUtil from 'ethereumjs-util';
+import { bufferToHex } from 'ethereumjs-util';
 import * as _ from 'lodash';
 
 import { Order, SignedOrder, SolidityTypes } from '../types';
@@ -34,7 +34,7 @@ export const utils = {
     getAssetHashHex(assetHash: string, schema: string): string {
       const concat = schema + ':' + assetHash;
       const hashBuf = ethABI.soliditySHA3(['string'], [concat]);
-      return ethUtil.bufferToHex(hashBuf);
+      return bufferToHex(hashBuf);
     },
     getOrderHashHex(order: Order | SignedOrder): string {
         const orderParts = [
@@ -65,10 +65,10 @@ export const utils = {
         const types = _.map(orderParts, o => o.type);
         const values = _.map(orderParts, o => o.value);
         const hash = ethABI.soliditySHA3(types, values);
-        return ethUtil.bufferToHex(hash);
+        return bufferToHex(hash);
     },
     getCurrentUnixTimestampSec(): BigNumber {
-        return new BigNumber(Date.now() / 1000).round();
+        return new BigNumber(Date.now() / 1000).integerValue();
     },
     getCurrentUnixTimestampMs(): BigNumber {
         return new BigNumber(Date.now());

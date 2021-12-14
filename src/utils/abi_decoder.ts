@@ -1,8 +1,8 @@
 /* Sourced from 0x.js */
 
-import { BigNumber } from '@0xproject/utils';
+import { BigNumber } from '@0x/utils';
 import * as _ from 'lodash';
-import * as Web3 from 'web3';
+import Web3 from 'web3';
 import * as SolidityCoder from 'web3/lib/solidity/coder';
 
 import { AbiType, ContractEventArgs, DecodedLogArgs, LogWithDecodedArgs, RawLog, SolidityTypes } from '../types';

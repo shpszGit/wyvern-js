@@ -4,7 +4,7 @@
  */
 import { TxData } from '@0xproject/types';
 import { BigNumber } from '@0xproject/utils';
-import * as Web3 from 'web3';
+import Web3 from 'web3';
 import { BaseContract } from './base_contract';
 export declare class WyvernProxyRegistryContract extends BaseContract {
     name: {

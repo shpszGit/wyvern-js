@@ -1,4 +1,4 @@
-import { BigNumber } from '@0xproject/utils';
+import { BigNumber } from '@0x/utils';
 import { AtomicizedReplacementEncoder, ECSignature, Network, Order, ReplacementEncoder, SignedOrder, TransactionReceiptWithDecodedLogs, Web3Provider, WyvernProtocolConfig } from './types';
 import { WyvernAtomicizerContract } from './abi_gen/wyvern_atomicizer';
 import { WyvernDAOContract } from './abi_gen/wyvern_d_a_o';

@@ -64,6 +64,7 @@
     ],
     "prefer-const": true,
     "prefer-for-of": true,
+    "prefer-conditional-expression": false,
     "prefer-function-over-method": true,
     "promise-function-async": true,
     "quotemark": [true, "single", "avoid-escape", "jsx-double"],

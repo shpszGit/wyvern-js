@@ -1,8 +1,8 @@
-import { SchemaValidator } from '@0xproject/json-schemas';
-import { BigNumber, intervalUtils } from '@0xproject/utils';
-import { Web3Wrapper } from '@0xproject/web3-wrapper';
+import { SchemaValidator } from '@0x/json-schemas';
+import { BigNumber, intervalUtils } from '@0x/utils';
+import { Web3Wrapper } from '@0x/web3-wrapper';
 import * as ethABI from 'ethereumjs-abi';
-import * as ethUtil from 'ethereumjs-util';
+import { bufferToHex, hashPersonalMessage, toBuffer } from 'ethereumjs-util';
 import * as _ from 'lodash';
 
 import {
@@ -37,7 +37,7 @@ export class WyvernProtocol {
 
     public static NULL_ADDRESS = constants.NULL_ADDRESS;
 
-    public static MAX_UINT_256 = new BigNumber(2).pow(256).sub(1);
+    public static MAX_UINT_256 = new BigNumber(2).pow(256).minus(1);
 
     public wyvernExchange: WyvernExchangeContract;
 
@@ -104,7 +104,7 @@ export class WyvernProtocol {
         // Source: https://mikemcl.github.io/bignumber.js/#random
         const randomNumber = BigNumber.random(constants.MAX_DIGITS_IN_UNSIGNED_256_INT);
         const factor = new BigNumber(10).pow(constants.MAX_DIGITS_IN_UNSIGNED_256_INT - 1);
-        const salt = randomNumber.times(factor).round();
+        const salt = randomNumber.times(factor).integerValue();
         return salt;
     }
 
@@ -120,7 +120,7 @@ export class WyvernProtocol {
         // format, we only assert that we were indeed passed a string.
         assert.isString('orderHash', orderHash);
         const schemaValidator = new SchemaValidator();
-        const isValidOrderHash = schemaValidator.validate(orderHash, schemas.orderHashSchema).valid;
+        const isValidOrderHash = schemaValidator.isValid(orderHash, schemas.orderHashSchema);
         return isValidOrderHash;
     }
 
@@ -321,32 +321,32 @@ export class WyvernProtocol {
 
         const exchangeContractAddress = config.wyvernExchangeContractAddress || WyvernProtocol.getExchangeContractAddress(config.network);
         this.wyvernExchange = new WyvernExchangeContract(
-            this._web3Wrapper.getContractInstance((constants.EXCHANGE_ABI as any), exchangeContractAddress),
-            {},
+            exchangeContractAddress,
+            provider,
         );
 
         const proxyRegistryContractAddress = config.wyvernProxyRegistryContractAddress || WyvernProtocol.getProxyRegistryContractAddress(config.network);
         this.wyvernProxyRegistry = new WyvernProxyRegistryContract(
-            this._web3Wrapper.getContractInstance((constants.PROXY_REGISTRY_ABI as any), proxyRegistryContractAddress),
-            {},
+            proxyRegistryContractAddress,
+            provider,
         );
 
         const daoContractAddress = config.wyvernDAOContractAddress || WyvernProtocol.getDAOContractAddress(config.network);
         this.wyvernDAO = new WyvernDAOContract(
-            this._web3Wrapper.getContractInstance((constants.DAO_ABI as any), daoContractAddress),
-            {},
+            daoContractAddress,
+            provider,
         );
 
         const tokenContractAddress = config.wyvernTokenContractAddress || WyvernProtocol.getTokenContractAddress(config.network);
         this.wyvernToken = new WyvernTokenContract(
-            this._web3Wrapper.getContractInstance((constants.TOKEN_ABI as any), tokenContractAddress),
-            {},
+            tokenContractAddress,
+            provider,
         );
 
         const atomicizerContractAddress = config.wyvernAtomicizerContractAddress || WyvernProtocol.getAtomicizerContractAddress(config.network);
         this.wyvernAtomicizer = new WyvernAtomicizerContract(
-            this._web3Wrapper.getContractInstance((constants.ATOMICIZER_ABI as any), atomicizerContractAddress),
-            {},
+            atomicizerContractAddress,
+            provider,
         );
     }
 
@@ -393,12 +393,12 @@ export class WyvernProtocol {
             // Parity and TestRpc nodes add the personalMessage prefix itself
             msgHashHex = orderHash;
         } else {
-            const orderHashBuff = ethUtil.toBuffer(orderHash);
-            const msgHashBuff = ethUtil.hashPersonalMessage(orderHashBuff);
-            msgHashHex = ethUtil.bufferToHex(msgHashBuff);
+            const orderHashBuff = toBuffer(orderHash);
+            const msgHashBuff = hashPersonalMessage(orderHashBuff);
+            msgHashHex = bufferToHex(msgHashBuff);
         }
 
-        const signature = await this._web3Wrapper.signTransactionAsync(signerAddress, msgHashHex);
+        const signature = await this._web3Wrapper.signMessageAsync(signerAddress, msgHashHex);
 
         // HACK: There is no consensus on whether the signatureHex string should be formatted as
         // v + r + s OR r + s + v, and different clients (even different versions of the same client)
@@ -449,8 +449,8 @@ export class WyvernProtocol {
                         return reject(WyvernProtocolError.TransactionMiningTimeout);
                     }
 
-                    const transactionReceipt = await this._web3Wrapper.getTransactionReceiptAsync(txHash);
-                    if (!_.isNull(transactionReceipt)) {
+                    const transactionReceipt = await this._web3Wrapper.getTransactionReceiptIfExistsAsync(txHash);
+                    if (transactionReceipt) {
                         intervalUtils.clearAsyncExcludingInterval(intervalId);
                         const logsWithDecodedArgs = _.map(
                             transactionReceipt.logs,

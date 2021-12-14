@@ -1,6 +1,7 @@
-import { TransactionReceipt } from '@0xproject/types';
-import { BigNumber } from '@0xproject/utils';
-import * as Web3 from 'web3';
+import { BigNumber } from '@0x/utils';
+import { TransactionReceipt } from 'ethereum-types';
+import { Web3JsProvider } from 'ethereum-types/lib';
+import { LogEntry, LogEntryEvent, DecodedLogEntry } from "ethereum-types"
 
 export interface WyvernProtocolConfig {
     network: Network;
@@ -53,7 +54,7 @@ export interface ECSignature {
     s: string;
 }
 
-export type LogEvent = Web3.LogEntryEvent;
+export type LogEvent = LogEntryEvent;
 export interface DecodedLogEvent<ArgsType> {
     isRemoved: boolean;
     log: LogWithDecodedArgs<ArgsType>;
@@ -65,10 +66,10 @@ export interface DecodedLogArgs {
     [argName: string]: ContractEventArg;
 }
 
-export interface LogWithDecodedArgs<ArgsType> extends Web3.DecodedLogEntry<ArgsType> {}
+export interface LogWithDecodedArgs<ArgsType> extends DecodedLogEntry<ArgsType> {}
 
 export interface TransactionReceiptWithDecodedLogs extends TransactionReceipt {
-    logs: Array<LogWithDecodedArgs<DecodedLogArgs> | Web3.LogEntry>;
+    logs: Array<LogWithDecodedArgs<DecodedLogArgs> | LogEntry>;
 }
 
 export type EventCallback<ArgsType> = (err: null | Error, log?: DecodedLogEvent<ArgsType>) => void;
@@ -83,7 +84,7 @@ export enum SolidityTypes {
     String = 'string',
 }
 
-export type RawLog = Web3.LogEntry;
+export type RawLog = LogEntry;
 
 export interface ContractEvent {
     logIndex: number;
@@ -179,4 +180,4 @@ export interface AnnotatedFunctionABI {
 export type ReplacementEncoder = (abi: AnnotatedFunctionABI, kind?: FunctionInputKind, encodeToBytes?: boolean) => string;
 export type AtomicizedReplacementEncoder = (abis: AnnotatedFunctionABI[], kind?: FunctionInputKind) => string;
 
-export type Web3Provider = Web3.Provider;
+export type Web3Provider = Web3JsProvider;

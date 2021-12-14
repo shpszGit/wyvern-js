@@ -33,6 +33,7 @@ suite('basic', () => {
   ordersAndHashes.map((orderAndHash: any, index: number) => {
     test('Order #' + index + ' hash is correct', () => {
       const hash = WyvernProtocol.getOrderHashHex(orderAndHash.order);
+      console.log(hash, orderAndHash.hash);
       assert.equal(hash, orderAndHash.hash);
     });
   });
