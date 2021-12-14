@@ -1,7 +1,12 @@
 /* Sourced from 0x.js */
 
+import { assert as sharedAssert } from '@0x/assert';
+
+// We need this import because it's actually used by sharedAssert which gets injected here
+// tslint:disable-next-line:no-unused-variable
+import { BigNumber } from '@0x/utils';
+
 import { Web3Wrapper } from '@0x/web3-wrapper';
-import { assert as sharedAssert } from '@0xproject/assert';
 import * as _ from 'lodash';
 
 import { ECSignature } from '../types';

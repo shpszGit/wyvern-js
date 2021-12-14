@@ -33,29 +33,11 @@ declare module 'ethereumjs-abi' {
     const isDynamic: (type: string) => boolean;
 }
 
-// truffle-hdwallet-provider declarations
-declare module 'truffle-hdwallet-provider' {
-    import Web3 from 'web3';
-    class HDWalletProvider implements Web3.Provider {
-        constructor(mnemonic: string, rpcUrl: string);
-        public sendAsync(
-            payload: Web3.JSONRPCRequestPayload,
-            callback: (err: Error, result: Web3.JSONRPCResponsePayload) => void,
-        ): void;
-    }
-    export = HDWalletProvider;
-}
-
 // abi-decoder declarations
 interface DecodedLogArg {}
 interface DecodedLog {
     name: string;
     events: DecodedLogArg[];
-}
-declare module 'abi-decoder' {
-    import Web3 from 'web3';
-    const addABI: (abi: Web3.AbiDefinition) => void;
-    const decodeLogs: (logs: Web3.LogEntry[]) => DecodedLog[];
 }
 
 declare module 'web3/lib/solidity/coder' {

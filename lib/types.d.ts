@@ -1,6 +1,6 @@
-import { TransactionReceipt } from '@0xproject/types';
 import { BigNumber } from '@0x/utils';
-import Web3 from 'web3';
+import { DecodedLogEntry, LogEntry, LogEntryEvent, TransactionReceipt } from 'ethereum-types';
+import { Web3JsProvider } from 'ethereum-types/lib';
 export interface WyvernProtocolConfig {
     network: Network;
     gasPrice?: BigNumber;
@@ -44,7 +44,7 @@ export interface ECSignature {
     r: string;
     s: string;
 }
-export declare type LogEvent = Web3.LogEntryEvent;
+export declare type LogEvent = LogEntryEvent;
 export interface DecodedLogEvent<ArgsType> {
     isRemoved: boolean;
     log: LogWithDecodedArgs<ArgsType>;
@@ -53,10 +53,10 @@ export declare type ContractEventArg = string | BigNumber;
 export interface DecodedLogArgs {
     [argName: string]: ContractEventArg;
 }
-export interface LogWithDecodedArgs<ArgsType> extends Web3.DecodedLogEntry<ArgsType> {
+export interface LogWithDecodedArgs<ArgsType> extends DecodedLogEntry<ArgsType> {
 }
 export interface TransactionReceiptWithDecodedLogs extends TransactionReceipt {
-    logs: Array<LogWithDecodedArgs<DecodedLogArgs> | Web3.LogEntry>;
+    logs: Array<LogWithDecodedArgs<DecodedLogArgs> | LogEntry>;
 }
 export declare type EventCallback<ArgsType> = (err: null | Error, log?: DecodedLogEvent<ArgsType>) => void;
 export declare type EventWatcherCallback = (log: LogEvent) => void;
@@ -68,7 +68,7 @@ export declare enum SolidityTypes {
     Bytes = "bytes",
     String = "string",
 }
-export declare type RawLog = Web3.LogEntry;
+export declare type RawLog = LogEntry;
 export interface ContractEvent {
     logIndex: number;
     transactionIndex: number;
@@ -152,4 +152,4 @@ export interface AnnotatedFunctionABI {
 }
 export declare type ReplacementEncoder = (abi: AnnotatedFunctionABI, kind?: FunctionInputKind, encodeToBytes?: boolean) => string;
 export declare type AtomicizedReplacementEncoder = (abis: AnnotatedFunctionABI[], kind?: FunctionInputKind) => string;
-export declare type Web3Provider = Web3.Provider;
+export declare type Web3Provider = Web3JsProvider;

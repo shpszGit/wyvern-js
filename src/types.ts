@@ -1,6 +1,5 @@
 import { BigNumber } from '@0x/utils';
-import { TransactionReceipt } from 'ethereum-types';
-import { DecodedLogEntry, LogEntry, LogEntryEvent } from 'ethereum-types';
+import { DecodedLogEntry, LogEntry, LogEntryEvent, TransactionReceipt } from 'ethereum-types';
 import { Web3JsProvider } from 'ethereum-types/lib';
 
 export interface WyvernProtocolConfig {

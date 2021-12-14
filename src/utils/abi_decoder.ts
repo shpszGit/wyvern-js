@@ -3,6 +3,7 @@
 import { BigNumber } from '@0x/utils';
 import { AbiDefinition, EventAbi, EventParameter, LogEntry } from 'ethereum-types';
 import * as _ from 'lodash';
+import Web3 from 'web3';
 import * as SolidityCoder from 'web3/lib/solidity/coder';
 
 import { AbiType, ContractEventArgs, DecodedLogArgs, LogWithDecodedArgs, RawLog, SolidityTypes } from '../types';
@@ -65,7 +66,7 @@ export class AbiDecoder {
         _.map(abiArray, (abi: AbiDefinition) => {
             if (abi.type === AbiType.Event) {
                 const signature = `${abi.name}(${_.map(abi.inputs, input => input.type).join(',')})`;
-                const signatureHash = new Web3().sha3(signature);
+                const signatureHash = new Web3().utils.sha3(signature);
                 this._methodIds[signatureHash] = abi;
             }
         });
