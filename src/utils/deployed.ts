@@ -16,6 +16,20 @@ export const deployed = {
         'WyvernAtomicizer': '0x613a12b156ffa304f714cc38d6ae5d3df70d8063',
         'WyvernTokenTransferProxy': '0xcdc9188485316bf6fa416d02b4f680227c50b89e',
     },
+    // --begin--2022.3.14--lzg
+    // 增加新配置，乔帮主给的
+    "mumbai": {
+      "Migrations": "0x47935e6619d62f58c42912252a00f454f30785ee",
+      "TestToken": "0x84ede1f62682dc45c2e19df46603cee8c2b6e867",
+      "TestDAO": "0x7111b3cefede71c71d9c599a4100bf6493978343",
+      "TestStatic": "0xa28f63476ea7ee2dbc898d35fdd185ae263c5cea",
+      "WyvernDAOProxy": "0x8e4289618363b66c96373f14dc172c1b96b7ec8b",
+      "WyvernAtomicizer": "0xe632f14fbd7573d5dbfc2413933a6407d4ce1793",
+      "WyvernProxyRegistry": "0x7962bedf1cd77e169f85e503a2d4aa4a664d0f8d",
+      "WyvernTokenTransferProxy": "0xf145f09fa25fd1f414ea2163d254a152389c0787",
+      "WyvernExchange": "0x7b7751697bdec2683b22439885c32383e612ad82"
+    },
+    // --end--2022.3.14--lzg
     'development': {
         'Migrations': '0x0545f898c5d9e028f69e969ca3250bf0bcaedbcf',
         'TestToken': '0xc2148e012abd699b76b298d5bca1618c43f985fe',
