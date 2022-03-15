@@ -19,7 +19,7 @@ export type SyncMethod = (...args: any[]) => any;
 export enum Network {
     Main = 'main',
     Rinkeby = 'rinkeby',
-    mumbai = 'mumbai'
+    mumbai = 'mumbai',
 }
 // --end--2022.3.14--lzg
 export enum SaleKind {

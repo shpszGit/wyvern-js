@@ -14,7 +14,8 @@ export declare type AsyncMethod = (...args: any[]) => Promise<any>;
 export declare type SyncMethod = (...args: any[]) => any;
 export declare enum Network {
     Main = "main",
-    Rinkeby = "rinkeby"
+    Rinkeby = "rinkeby",
+    mumbai = "mumbai"
 }
 export declare enum SaleKind {
     FixedPrice = 0,
