@@ -55,6 +55,17 @@ export declare const constants: {
             'WyvernAtomicizer': string;
             'WyvernTokenTransferProxy': string;
         };
+        'mumbai': {
+            'Migrations': string;
+            'TestToken': string;
+            'TestDAO': string;
+            'TestStatic': string;
+            'WyvernDAOProxy': string;
+            'WyvernAtomicizer': string;
+            'WyvernProxyRegistry': string;
+            'WyvernTokenTransferProxy': string;
+            'WyvernExchange': string;
+        };
     };
     ATOMICIZER_ABI: {
         'constant': boolean;
