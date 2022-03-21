@@ -15,10 +15,14 @@ export interface WyvernProtocolConfig {
 export type AsyncMethod = (...args: any[]) => Promise<any>;
 export type SyncMethod = (...args: any[]) => any;
 
+// --begin--2022.3.14--lzg
+// 新增mumbai测试网， 没有其他依赖，仅仅改这里。
 export enum Network {
     Main = 'main',
     Rinkeby = 'rinkeby',
+    mumbai = 'mumbai',
 }
+// --end--2022.3.14--lzg
 
 export enum SaleKind {
     FixedPrice = 0,

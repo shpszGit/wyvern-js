@@ -1,3 +1,5 @@
+import Web3 from "web3";
+
 declare module 'web3_beta';
 declare module 'request-promise-native';
 declare module 'web3-provider-engine';
@@ -35,6 +37,7 @@ declare module 'ethereumjs-abi' {
 
 // truffle-hdwallet-provider declarations
 declare module 'truffle-hdwallet-provider' {
+    // import * as Web3 from 'web3';
     import * as Web3 from 'web3';
     class HDWalletProvider implements Web3.Provider {
         constructor(mnemonic: string, rpcUrl: string);
@@ -53,9 +56,8 @@ interface DecodedLog {
     events: DecodedLogArg[];
 }
 declare module 'abi-decoder' {
-    import * as Web3 from 'web3';
-    const addABI: (abi: Web3.AbiDefinition) => void;
-    const decodeLogs: (logs: Web3.LogEntry[]) => DecodedLog[];
+        const addABI: (abi: Web3.AbiDefinition) => void;
+        const decodeLogs: (logs: Web3.LogEntry[]) => DecodedLog[];
 }
 
 declare module 'web3/lib/solidity/coder' {
