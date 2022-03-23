@@ -28,6 +28,15 @@ Before any development, install the required NPM dependencies:
 yarn
 ```
 
+#### lzg
+In the lzg mac mini I use node v12.22.11,used the taobao source for yarn.
+when you are changed the code
+you should run the script ./scripts/build.sh to rebuiled the generation files.
+and please ignore the tslint error.
+```bash
+./scripts/build.sh
+```
+
 #### Contributing
 
 Contributions welcome! Please use GitHub issues for suggestions/concerns - if you prefer to express your intentions in code, feel free to submit a pull request.
