@@ -48,4 +48,17 @@ export declare const deployed: {
         'WyvernAtomicizer': string;
         'WyvernTokenTransferProxy': string;
     };
+    'mumbai': {
+        'WyvernToken': string;
+        'WyvernDAO': string;
+        'Migrations': string;
+        'TestToken': string;
+        'TestDAO': string;
+        'TestStatic': string;
+        'WyvernDAOProxy': string;
+        'WyvernAtomicizer': string;
+        'WyvernProxyRegistry': string;
+        'WyvernTokenTransferProxy': string;
+        'WyvernExchange': string;
+    };
 };
